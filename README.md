@@ -149,5 +149,17 @@ module.exports = { fetchWHOArticles};
 ```
 DRUGBANK_API_KEY=https://api.drugbank.com/v1/interactions'
 ```
+from openai import OpenAI
+import os
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+response = client.responses.create(
+    model="gpt-4o-mini",
+    input="tell me a joke",
+)
+print(response.output[0].content[0].text)
+import json
+print(json.dumps(response_multimodal.__dict__, default=lambda o: o.__dict__, indent=4))
+copy_Right_2025@DR_Mostafa_ELMOURABEA
+ ( Full thanks for ALLAH)
 
 ……
