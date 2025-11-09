@@ -149,5 +149,19 @@ module.exports = { fetchWHOArticles};
 ```
 DRUGBANK_API_KEY=https://api.drugbank.com/v1/interactions'
 ```
-
+from openai import OpenAI
+import os
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+response = client.responses.create(
+    model="gpt-4o-mini",
+    input="tell me a joke",
+)
+print(response.output[0].content[0].text)
+import json
+print(json.dumps(response_multimodal.__dict__, default=lambda o: o.__dict__, indent=4))
+copy_Right_2025@DR_Mostafa_ELMOURABEA
+ ( Full thanks for ALLAH)
+https://creativecommons.org/publicdomain/zero/1.0/https://creativecommons.org/publicdomain/zero/1.0/
+https://mirrors.creativecommons.org/presskit/icons/zero.
+svghttps://mirrors.creativecommons.org/presskit/icons/cc.svg<a href="https://pharmaintel-bot--elmourabea.github.app/">Pharmacy AI-BOT </a> by <a href="https://mostelmorabeacom.link">Mostafa Elmourabea</a> is marked <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/zero.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
 ……

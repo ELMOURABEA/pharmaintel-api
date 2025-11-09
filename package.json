@@ -1,0 +1,21 @@
+{
+  "name": "pharmaintel-api",
+  "version": "1.0.0",
+  "description": "Intelligent pharmacist API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["pharmacy", "api", "drug-interactions"],
+  "author": "Dr. Mostafa Abd-el-Kader",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.0.3",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
