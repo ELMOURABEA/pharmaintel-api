@@ -27,10 +27,6 @@ module.exports = [
     rules: {
       'no-console': 'off',
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-      quotes: ['error', 'single'],
-      semi: ['error', 'always'],
-      indent: ['error', 2],
-      'comma-dangle': ['error', 'always-multiline'],
     },
   },
   {
