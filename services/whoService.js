@@ -6,4 +6,4 @@ async function fetchWHOArticles() {
   return response.data;
 }
 
-module.exports = { fetchWHOArticles};
+module.exports = { fetchWHOArticles };
