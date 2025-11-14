@@ -11,6 +11,9 @@ jobs:
     name: Test and Lint
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+
     strategy:
       matrix:
         node-version: [18.x, 20.x]
@@ -61,6 +64,9 @@ jobs:
   docker:
     name: Docker Build
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout code
