@@ -1,0 +1,225 @@
+openapi: 3.0.3
+info:
+  title: PharmaIntel API
+  description: |
+    Intelligent Pharmacist API providing pharmaceutical intelligence including drug interactions, FDA recalls, and WHO health articles.
+
+    Built with security best practices and ready for production deployment.
+  version: 1.0.0
+  contact:
+    name: Dr. Mostafa Abd-el-Kader
+  license:
+    name: ISC
+    url: https://opensource.org/licenses/ISC
+
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+  - url: https://your-cloudrun-url.run.app
+    description: Production server (Google Cloud Run)
+
+tags:
+  - name: Health
+    description: Service health and status endpoints
+  - name: Drug Interactions
+    description: Check drug-to-drug interactions
+  - name: FDA Recalls
+    description: Query FDA drug recall information
+  - name: WHO
+    description: Fetch WHO Global Health Observatory articles
+
+paths:
+  /:
+    get:
+      tags:
+        - Health
+      summary: Welcome message
+      description: Returns a welcome message with API information
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/html:
+              schema:
+                type: string
+                example: PharmaIntel Bot API — Powered by COPILOT TO ACHIEVE — DR / MOSTAFA ABD-EL-KADER — IDEA @2025
+
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Health check endpoint
+      description: Returns service status and version information
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  service:
+                    type: string
+                    example: PharmaIntel
+                  version:
+                    type: string
+                    example: v1
+
+  /api/interactions:
+    post:
+      tags:
+        - Drug Interactions
+      summary: Check drug interactions
+      description: |
+        Check for potential interactions between multiple drugs using the DrugBank API.
+        Requires DRUGBANK_API_KEY environment variable to be set.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - drugs
+              properties:
+                drugs:
+                  type: array
+                  description: Array of drug names to check for interactions
+                  minItems: 1
+                  items:
+                    type: string
+                  example: ['aspirin', 'ibuprofen']
+      responses:
+        '200':
+          description: Successful interaction check
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Interaction data from DrugBank API
+        '400':
+          description: Invalid request (missing or empty drugs array)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: 'Invalid request: "drugs" must be a non-empty array.'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '502':
+          description: DrugBank API request failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: Interaction check failed
+
+  /api/recalls:
+    get:
+      tags:
+        - FDA Recalls
+      summary: Query FDA drug recalls
+      description: |
+        Retrieve FDA drug recall information for a specific ingredient.
+        Uses the OpenFDA API (no API key required).
+      parameters:
+        - name: ingredient
+          in: query
+          required: true
+          description: Drug ingredient name to search for recalls
+          schema:
+            type: string
+          example: ibuprofen
+      responses:
+        '200':
+          description: Successful recall query
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Array of recall records from OpenFDA
+                items:
+                  type: object
+        '400':
+          description: Missing ingredient parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: 'Missing "ingredient" query param.'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '502':
+          description: OpenFDA API request failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: Recall fetch failed
+
+  /api/who:
+    get:
+      tags:
+        - WHO
+      summary: Fetch WHO articles
+      description: |
+        Retrieve articles from the WHO Global Health Observatory.
+        No parameters required.
+      responses:
+        '200':
+          description: Successful WHO articles fetch
+          content:
+            application/json:
+              schema:
+                type: object
+                description: WHO articles data
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '502':
+          description: WHO API request failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: WHO articles fetch failed
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+      required:
+        - error
+
+  securitySchemes:
+    RateLimit:
+      type: apiKey
+      in: header
+      name: X-RateLimit-Limit
+      description: Rate limiting (60 requests per minute per IP)
+
+security:
+  - RateLimit: []

@@ -1,7 +1,7 @@
 # PharmaIntel API
 
 **Intelligent Pharmacist API**  
-*Let's make it happen, Dr. Mostafa Abd-el-Kader 💼💊*
+_Let's make it happen, Dr. Mostafa Abd-el-Kader 💼💊_
 
 ## Overview
 
@@ -22,11 +22,13 @@ PharmaIntel API is a production-ready RESTful service providing pharmaceutical i
 ### Local Development
 
 1. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 2. **Set up environment**
+
    ```bash
    cp .env.example .env
    # Edit .env and add your DRUGBANK_API_KEY
@@ -55,12 +57,15 @@ docker run -p 3000:3000 -e DRUGBANK_API_KEY=your_key pharmaintel-api
 ## API Endpoints
 
 ### Health Check
+
 ```http
 GET /health
 ```
+
 Returns service status and version information.
 
 ### Drug Interactions
+
 ```http
 POST /api/interactions
 Content-Type: application/json
@@ -69,18 +74,23 @@ Content-Type: application/json
   "drugs": ["drugA", "drugB"]
 }
 ```
+
 Checks drug interactions using DrugBank API.
 
 ### FDA Recalls
+
 ```http
 GET /api/recalls?ingredient=ibuprofen
 ```
+
 Retrieves FDA drug recall information.
 
 ### WHO Articles
+
 ```http
 GET /api/who
 ```
+
 Fetches WHO Global Health Observatory articles.
 
 ## Deployment
@@ -103,6 +113,7 @@ This repository includes automated deployment to Google Cloud Run via GitHub Act
 #### GitHub Secrets
 
 Configure these secrets in your GitHub repository:
+
 - `GCP_PROJECT_ID`: Your GCP project ID
 - `GCP_REGION`: Deployment region (e.g., europe-west1)
 - `GCP_SA_EMAIL`: Service account email
@@ -111,6 +122,7 @@ Configure these secrets in your GitHub repository:
 #### Deploy
 
 Push a version tag to trigger deployment:
+
 ```bash
 git tag v1.0.0
 git push origin v1.0.0
@@ -120,10 +132,10 @@ Or manually trigger via GitHub Actions.
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `PORT` | No | Server port (default: 3000) |
-| `DRUGBANK_API_KEY` | Yes | DrugBank API authentication key |
+| Variable           | Required | Description                     |
+| ------------------ | -------- | ------------------------------- |
+| `PORT`             | No       | Server port (default: 3000)     |
+| `DRUGBANK_API_KEY` | Yes      | DrugBank API authentication key |
 
 ## Testing
 
@@ -170,7 +182,7 @@ pharmaintel-api/
 ## License & Credits
 
 **Copyright 2025 @ DR. Mostafa ELMOURABEA**  
-*(Full thanks to ALLAH)*
+_(Full thanks to ALLAH)_
 
 Powered by COPILOT TO ACHIEVE — DR / MOSTAFA ABD-EL-KADER — IDEA @2025
 
