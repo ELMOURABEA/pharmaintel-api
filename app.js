@@ -59,7 +59,7 @@ app.get('/health', (req, res) => {
 // Root
 app.get('/', (req, res) => {
   res.send(
-    'PharmaIntel Bot API — Powered by COPILOT TO ACHIEVE — DR / MOSTAFA ABD-EL-KADER — IDEA @2025'
+    'PharmaIntel Bot API — Powered by COPILOT TO ACHIEVE — DR / MOSTAFA ABD-EL-KADER — IDEA @2025',
   );
 });
 

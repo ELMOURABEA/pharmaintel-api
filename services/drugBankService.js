@@ -6,7 +6,7 @@ async function checkInteractions(drugs) {
   const response = await axios.post(
     'https://api.drugbank.com/v1/interactions',
     { drugs },
-    { headers: { Authorization: `Bearer ${DRUGBANK_KEY}` } }
+    { headers: { Authorization: `Bearer ${DRUGBANK_KEY}` } },
   );
   return response.data;
 }
