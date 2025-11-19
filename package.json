@@ -21,6 +21,13 @@
   ],
   "author": "Dr. Mostafa Abd-el-Kader",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ELMOURABEA/pharmaintel-api.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
     "axios": "^1.13.2",
     "cors": "^2.8.5",
