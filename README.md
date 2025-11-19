@@ -117,7 +117,9 @@ Fetches WHO Global Health Observatory articles.
 
 ## Publishing
 
-For information on publishing this API to package registries and marketplaces, see [PUBLISHING.md](PUBLISHING.md).
+This API is ready to publish to market! See [NEXT_STEPS.md](NEXT_STEPS.md) for a quick start guide.
+
+For detailed information on publishing to package registries and marketplaces, see [PUBLISHING.md](PUBLISHING.md).
 
 ## Deployment
 
