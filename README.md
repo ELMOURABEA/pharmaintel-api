@@ -17,6 +17,28 @@ PharmaIntel API is a production-ready RESTful service providing pharmaceutical i
 - 🐳 **Docker Ready**: Containerized for easy deployment
 - ☁️ **Cloud Native**: CI/CD pipeline for Google Cloud Run
 
+## Installation
+
+### Via GitHub Packages (NPM)
+
+```bash
+# Configure npm to use GitHub Packages for @ELMOURABEA scope
+echo "@elmourabea:registry=https://npm.pkg.github.com" >> .npmrc
+
+# Install the package (requires GitHub authentication)
+npm install @elmourabea/pharmaintel-api
+```
+
+### Via Docker (GitHub Container Registry)
+
+```bash
+# Pull the latest image
+docker pull ghcr.io/elmourabea/pharmaintel-api:latest
+
+# Run the container
+docker run -p 3000:3000 -e DRUGBANK_API_KEY=your_key ghcr.io/elmourabea/pharmaintel-api:latest
+```
+
 ## Quick Start
 
 ### Local Development
@@ -92,6 +114,12 @@ GET /api/who
 ```
 
 Fetches WHO Global Health Observatory articles.
+
+## Publishing
+
+This API is ready to publish to market! See [NEXT_STEPS.md](NEXT_STEPS.md) for a quick start guide.
+
+For detailed information on publishing to package registries and marketplaces, see [PUBLISHING.md](PUBLISHING.md).
 
 ## Deployment
 
