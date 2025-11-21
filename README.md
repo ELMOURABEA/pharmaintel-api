@@ -103,8 +103,8 @@ This repository includes automated deployment to Google Cloud Run via GitHub Act
 #### GitHub Secrets
 
 Configure these secrets in your GitHub repository:
-- `GCP_PROJECT_ID`: Your GCP project ID
-- `GCP_REGION`: Deployment region (e.g., europe-west1)
+- `GCP_PROJECT_ID`: Your GCP project ID (e.g., `pharmaintel`)
+- `GCP_REGION`: Deployment region (e.g., `europe-west1`)
 - `GCP_SA_EMAIL`: Service account email
 - `GCP_SA_KEY`: Service account JSON key
 
