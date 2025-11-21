@@ -152,7 +152,7 @@ pharmaintel-api/
 ├── app.js                    # Main application
 ├── routes/
 │   ├── interactions.js       # Drug interactions endpoint
-│   ├── recalls.js           # FDA recalls endpoint
+│   ├── recalls.js            # FDA recalls endpoint
 │   └── who.js               # WHO articles endpoint
 ├── services/
 │   ├── drugBankService.js   # DrugBank API integration
