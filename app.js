@@ -9,7 +9,7 @@ const app = express();
 
 // Security & middleware
 app.use(helmet());
-app.use(cors({ origin: '*', methods: ['GET','POST'] }));
+app.use(cors({ origin: '*', methods: ['GET', 'POST'] }));
 app.use(express.json({ limit: '1mb' }));
 
 // Basic rate limit
