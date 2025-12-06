@@ -83,8 +83,7 @@ See `.github/workflows/deploy-cloudrun.yml`. Configure these GitHub secrets:
 
 - `GCP_PROJECT_ID`: Your GCP project ID
 - `GCP_REGION`: Deployment region (e.g., europe-west1)
-- `GCP_SA_EMAIL`: Service account email
-- `GCP_SA_KEY`: Service account JSON key
+- `GCP_SA_KEY`: Service account JSON key (full JSON credentials file content)
 
 Deploy by pushing a tag:
 
