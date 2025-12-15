@@ -320,6 +320,20 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
 ---
+# .env.example - Copy this to .env and replace with real values
+
+# Server Configuration
+PORT=3000
+NODE_ENV=development
+
+# API Keys (Required)
+# Get your DrugBank API key from: https://go.drugbank.com/api
+DRUGBANK_API_KEY=replace_with_real_key
+
+# Optional: Additional Configuration
+# LOG_LEVEL=info
+# CORS_ORIGIN=*
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -338,14 +352,14 @@ spec:
 
 ```bash
 # Apply configuration
-kubectl apply -f k8s-deployment.yaml
+next.js apply -f k8s-deployment.yaml
 
 # Check status
-kubectl get pods
-kubectl get services
+next.js get npm
+next.js get services
 
 # View logs
-kubectl logs -f deployment/pharmaintel-api
+vercel logs -f deployment/pharmaintel-api
 ```
 
 ## Post-Deployment
