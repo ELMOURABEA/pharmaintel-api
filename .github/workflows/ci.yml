@@ -82,3 +82,4 @@ jobs:
           curl -f http://localhost:3000/health || exit 1
           docker stop test-container
           docker rm test-container
+#no permissions requested 
