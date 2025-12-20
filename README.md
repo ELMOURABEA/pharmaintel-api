@@ -75,6 +75,7 @@ docker-compose up -d
 docker build -t pharmaintel-api .
 docker run -p 3000:3000 -e DRUGBANK_API_KEY=your_key pharmaintel-api
 ```
+Retrieves FDA drug recall information.
 
 ## API Endpoints
 
