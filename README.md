@@ -1,7 +1,7 @@
 # PharmaIntel API
 
 **Intelligent Pharmacist API**  
-*Let's make it happen, Dr. Mostafa Abd-el-Kader 💼💊*
+_Let's make it happen, Dr. Mostafa Abd-el-Kader 💼💊_
 
 ## Overview
 
@@ -17,16 +17,40 @@ PharmaIntel API is a production-ready RESTful service providing pharmaceutical i
 - 🐳 **Docker Ready**: Containerized for easy deployment
 - ☁️ **Cloud Native**: CI/CD pipeline for Google Cloud Run
 
+## Installation
+
+### Via GitHub Packages (NPM)
+
+```bash
+# Configure npm to use GitHub Packages for @ELMOURABEA scope
+echo "@elmourabea:registry=https://npm.pkg.github.com" >> .npmrc
+
+# Install the package (requires GitHub authentication)
+npm install @elmourabea/pharmaintel-api
+```
+
+### Via Docker (GitHub Container Registry)
+
+```bash
+# Pull the latest image
+docker pull ghcr.io/elmourabea/pharmaintel-api:latest
+
+# Run the container
+docker run -p 3000:3000 -e DRUGBANK_API_KEY=your_key ghcr.io/elmourabea/pharmaintel-api:latest
+```
+
 ## Quick Start
 
 ### Local Development
 
 1. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 2. **Set up environment**
+
    ```bash
    cp .env.example .env
    # Edit .env and add your DRUGBANK_API_KEY
@@ -51,16 +75,20 @@ docker-compose up -d
 docker build -t pharmaintel-api .
 docker run -p 3000:3000 -e DRUGBANK_API_KEY=your_key pharmaintel-api
 ```
+Retrieves FDA drug recall information.
 
 ## API Endpoints
 
 ### Health Check
+
 ```http
 GET /health
 ```
+
 Returns service status and version information.
 
 ### Drug Interactions
+
 ```http
 POST /api/interactions
 Content-Type: application/json
@@ -69,19 +97,30 @@ Content-Type: application/json
   "drugs": ["drugA", "drugB"]
 }
 ```
+
 Checks drug interactions using DrugBank API.
 
 ### FDA Recalls
+
 ```http
 GET /api/recalls?ingredient=ibuprofen
 ```
+
 Retrieves FDA drug recall information.
 
 ### WHO Articles
+
 ```http
 GET /api/who
 ```
+
 Fetches WHO Global Health Observatory articles.
+
+## Publishing
+
+This API is ready to publish to market! See [NEXT_STEPS.md](NEXT_STEPS.md) for a quick start guide.
+
+For detailed information on publishing to package registries and marketplaces, see [PUBLISHING.md](PUBLISHING.md).
 
 ## Deployment
 
@@ -103,14 +142,15 @@ This repository includes automated deployment to Google Cloud Run via GitHub Act
 #### GitHub Secrets
 
 Configure these secrets in your GitHub repository:
-- `GCP_PROJECT_ID`: Your GCP project ID (e.g., `pharmaintel`)
-- `GCP_REGION`: Deployment region (e.g., `europe-west1`)
-- `GCP_SA_EMAIL`: Service account email
-- `GCP_SA_KEY`: Service account JSON key
+
+- `GCP_PROJECT_ID`: Your GCP project ID
+- `GCP_REGION`: Deployment region (e.g., europe-west1)
+- `GCP_SA_KEY`: Service account JSON key (full JSON credentials file content)
 
 #### Deploy
 
 Push a version tag to trigger deployment:
+
 ```bash
 git tag v1.0.0
 git push origin v1.0.0
@@ -120,10 +160,10 @@ Or manually trigger via GitHub Actions.
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `PORT` | No | Server port (default: 3000) |
-| `DRUGBANK_API_KEY` | Yes | DrugBank API authentication key |
+| Variable           | Required | Description                     |
+| ------------------ | -------- | ------------------------------- |
+| `PORT`             | No       | Server port (default: 3000)     |
+| `DRUGBANK_API_KEY` | Yes      | DrugBank API authentication key |
 
 ## Testing
 
@@ -152,7 +192,7 @@ pharmaintel-api/
 ├── app.js                    # Main application
 ├── routes/
 │   ├── interactions.js       # Drug interactions endpoint
-│   ├── recalls.js            # FDA recalls endpoint
+│   ├── recalls.js           # FDA recalls endpoint
 │   └── who.js               # WHO articles endpoint
 ├── services/
 │   ├── drugBankService.js   # DrugBank API integration
@@ -170,7 +210,7 @@ pharmaintel-api/
 ## License & Credits
 
 **Copyright 2025 @ DR. Mostafa ELMOURABEA**  
-*(Full thanks to ALLAH)*
+_(Full thanks to ALLAH)_
 
 Powered by COPILOT TO ACHIEVE — DR / MOSTAFA ABD-EL-KADER — IDEA @2025
 
