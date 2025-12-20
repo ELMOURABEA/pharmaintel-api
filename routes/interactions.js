@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     const result = await checkInteractions(drugs);
     res.json(result);
   } catch (err) {
-    console.error('Interaction check failed:', err.message);
+    console.error('Interaction check failed:', err);
     res.status(502).json({ error: 'Interaction check failed' });
   }
 });
